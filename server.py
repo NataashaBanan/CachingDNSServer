@@ -18,7 +18,7 @@ def work_loop():
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(("", 53))
-    # привязали сокет к адресу
+    # привязали сокет к порту
 
     try:
         while True:
