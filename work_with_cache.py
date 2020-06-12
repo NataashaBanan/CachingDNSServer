@@ -11,6 +11,7 @@ class Packet:
 def get_response_from_cache(dns_record, database):
     print("get cache answer")
     key = (str(dns_record.q.qname).lower(), dns_record.q.qtype)
+    # ключ - доменное имя и тип записи
     if key in database and database[key]:
         reply = dns_record.reply()
         reply.rr = [p.resource_record for p in database[key]]
@@ -43,6 +44,7 @@ def add_records(dns_record, database):
 
 def add_record(rr, date_time, database):
     k = (str(rr.rname).lower(), rr.rtype)
+    # ключ - имя и тип записи
     if k in database:
         database[k].add(Packet(rr, date_time))
     else:
